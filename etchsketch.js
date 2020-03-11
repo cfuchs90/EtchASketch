@@ -4,7 +4,9 @@ const clearButton = document.querySelector("#clearGrid");
 const newGridButton = document.querySelector("#newGrid");
 let randColorSwitch = 0;
 
-function getGridList(container)
+function getGridList(container, element) { 
+  return container.querySelectorAll(element);
+}
 
 
 function drawGrid(numOfSquares) {
@@ -19,7 +21,7 @@ function drawGrid(numOfSquares) {
 }
 
 function colorGrid(){
-  let gridElementList = mainContainer.querySelectorAll("div");
+  let gridElementList = getGridList(mainContainer, "div");
 
   gridElementList.forEach((element) => {
     element.addEventListener("mouseover", (e) => {
@@ -43,7 +45,7 @@ function randomColor() {
 }
 
 function clearGrid() {
-  gridElements = mainContainer.querySelectorAll("div");
+  gridElements = getGridList(mainContainer, "div");
   for(let element of gridElements) {
     element.style.background = "white";
   }
@@ -51,7 +53,7 @@ function clearGrid() {
 
 
 function removeGrid() {
-  let gridElementList = mainContainer.querySelectorAll("div");
+  let gridElementList = getGridList(mainContainer, "div");
   for(let element of gridElementList)
     mainContainer.removeChild(element);
 }
